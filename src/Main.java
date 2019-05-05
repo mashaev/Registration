@@ -5,59 +5,25 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Manager manager = new Manager("Nargiza", "999545454", new String[] {"18:00","20:00"});
-         manager.appendCourse("Java",12000,false,"20:00","22:00",12);
-
+        Manager manager = new Manager("Nargiza", "999545454");
+         manager.appendCourse("Java programm",12000,true,"20:00","22:00",12);
+         manager.appendCourse("Web programm",9000, false,"18:00","20:00",12);
 
          manager.printCourseName();
 
-       /* for (int i = 0; i<3;i++) {
-
-            manager.speak("Hello! My name is " + manager.name );
-            manager.speak("What`s your name");
-
-            Student student = new Student();
-            student.wallet = 12000;
-            student.time = "20:00";
-            student.name = student.answer();
-
-            manager.speak("How old are you?");
-            student.age = Integer.parseInt(student.answer());
-            manager.speak("Do you have experience?");
-
-            String exp = student.answer();
-            if (exp.equals("Yes")) {
-                student.hasExprerience = true;
-            } else {
-                student.hasExprerience = false;
-            }
-
-            student.speak("How much your course?");
-            double price = manager.getCoursePrice();
-            manager.speak(String.valueOf(price));
+          Student student = new Student();
+          student.hasExprerience = true;
+          student.name = "Timur";
+          student.wallet = 12000;
+          student.age = 25;
+          student.time ="20:00";
 
 
-            if (student.compare(student.wallet, price)) {
-                student.speak("Which time your course start?");
-                String[] times = manager.getLessonTimes();
+     ArrayList<Course> courses = manager.getCourses();
 
-                if (student.chooseTime(times)) {
-                    manager.speak("You are registered");
-
-                } else {
-                    student.speak("it`s not my convenient time!");
-                }
-
-            } else {
-                student.speak("Sorry! Not enough money");
-            }
-        }
-
-        ArrayList<Student> students = manager.getStudents();
-
-         for (int i=0; i <students.size();i++){
-             manager.speak(students.get(i).name + "and" + manager.lessonTimes);
-         }*/
+     if (manager.registerStudent(student,courses.get(0))){
+         manager.speak("You successfully registered");
+     }
 
     }
 }

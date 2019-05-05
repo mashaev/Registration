@@ -1,20 +1,19 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Manager extends Human {
 
-    String[] lessonTimes;
-    private final double price = 12000;
+
     private ArrayList<Student> students = new ArrayList<>();
 
     private ArrayList<Course> courses = new ArrayList<>();
 
 
 
-    public Manager(String name, String phone, String[] times) {
+    public Manager(String name, String phone ) {
         this.name = name;
         this.phone = phone;
-        this.lessonTimes = times;
+
     }
 
     public void appendCourse(String courseName, double price, boolean needExp,  String startDate, String endDate,int count){
@@ -32,15 +31,29 @@ public class Manager extends Human {
         }
     }
 
-    public double getCoursePrice(){
-        return price;
-    }
 
-    public String[] getLessonTimes(){
-        return lessonTimes;
-    }
+
 
     public boolean registerStudent(Student student, Course course){
+         if (student.wallet < course.price){
+             speak("You don`n have enough money");
+           return false;
+         }
+
+         if (!student.hasExprerience && course.needExperience){
+             speak("Needed experience");
+             return false;
+         }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+         String time = sdf.format(course.startDate);
+
+         if (!time.equals(student.time)){
+             speak("Choosen time not fit for you");
+             return false;
+
+         }
+
        if (course.hasFreePlace()){
            course.addStudent(student);
            return true;
