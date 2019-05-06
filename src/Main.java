@@ -7,7 +7,7 @@ public class Main {
 
         Manager manager = new Manager("Nargiza", "999545454");
          manager.appendCourse("Java programm",12000,true,"20:00","22:00",12);
-         manager.appendCourse("Web programm",9000, false,"18:00","20:00",12);
+         manager.appendCourse("Web programm",9000, false,"20:00","20:00",12);
 
          manager.printCourseName();
 
@@ -24,6 +24,14 @@ public class Main {
      if (manager.registerStudent(student,courses.get(0))){
          manager.speak("You successfully registered");
      }
+
+        if (manager.registerStudent(student,courses.get(1))){
+            manager.speak("You successfully registered");
+        }
+
+        manager.printCourse();
+
+
 
     }
 }

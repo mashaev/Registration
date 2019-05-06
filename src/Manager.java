@@ -48,7 +48,7 @@ public class Manager extends Human {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
          String time = sdf.format(course.startDate);
 
-         if (!time.equals(student.time)){
+         if (!time.equals(student.time)) {
              speak("Choosen time not fit for you");
              return false;
 
@@ -59,6 +59,19 @@ public class Manager extends Human {
            return true;
        }
        return false;
+    }
+
+    public void printCourse(){
+        for (int i=0; i < courses.size();i++){
+            Course course = courses.get(i);
+
+            ArrayList<Student> students = course.students;
+
+            for (int j=0; j<students.size();j++){
+                System.out.println(course.courseName+":  "+ students.get(j).name);
+            }
+
+        }
     }
 
     public ArrayList<Student> getStudents(){
